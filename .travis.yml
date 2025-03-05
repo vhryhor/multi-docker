@@ -3,12 +3,12 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t vgrygor/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t vhryhor/react-test -f ./client/Dockerfile.dev ./client
 script:
-  - docker run -e CI=true vgrygor/react-test npm test
+  - docker run -e CI=true vhryhor/react-test npm test
 after_success:
-  - docker build -t vgrygor/multi-client ./client
-  - docker build -t grygor/multi-nginx ./nginx
-  - docker build -t grygor/multi-server ./server
-  - docker build -t grygor/multi-worker ./worker
+  - docker build -t vhryhor/multi-client ./client
+  - docker build -t vhryhor/multi-nginx ./nginx
+  - docker build -t vhryhor/multi-server ./server
+  - docker build -t vhryhor/multi-worker ./worker
 
