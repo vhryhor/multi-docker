@@ -11,4 +11,10 @@ after_success:
   - docker build -t vhryhor/multi-nginx ./nginx
   - docker build -t vhryhor/multi-server ./server
   - docker build -t vhryhor/multi-worker ./worker
-
+  # Log in to the docker CLI
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --pasword-stdin
+  # Take those images and push them to docker r_github_packages:
+  - docker push vhryhor/multi-client
+  - docker push vhryhor/multi-nginx
+  - docker push vhryhor/multi-server
+  - docker push vhryhor/multi-worker
