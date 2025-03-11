@@ -3,18 +3,18 @@ sudo: required
 services:
   - docker
 before_install:
-  - docker build -t vhryhor/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t vgrygor/react-test -f ./client/Dockerfile.dev ./client
 script:
-  - docker run -e CI=true vhryhor/react-test npm test
+  - docker run -e CI=true vgrygor/react-test npm test
 after_success:
-  - docker build -t vhryhor/multi-client ./client
-  - docker build -t vhryhor/multi-nginx ./nginx
-  - docker build -t vhryhor/multi-server ./server
-  - docker build -t vhryhor/multi-worker ./worker
+  - docker build -t vgrygor/multi-client ./client
+  - docker build -t vgrygor/multi-nginx ./nginx
+  - docker build -t vgrygor/multi-server ./server
+  - docker build -t vgrygor/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --pasword-stdin
   # Take those images and push them to docker r_github_packages:
-  - docker push vhryhor/multi-client
-  - docker push vhryhor/multi-nginx
-  - docker push vhryhor/multi-server
-  - docker push vhryhor/multi-worker
+  - docker push vgrygor/multi-client
+  - docker push vgrygor/multi-nginx
+  - docker push vgrygor/multi-server
+  - docker push vgrygor/multi-worker
